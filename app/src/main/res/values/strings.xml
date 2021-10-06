@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AsyncTaskLoader</string>
+    <string name="instructions">Enter a book name to find out who wrote the book. </string>
+    <string name="button_text">Search Books</string>
+    <string name="input_hint">Book Title</string>
+    <string name="no_results">Không có kết quả trả về</string>
+    <string name="loading">Đang tải...</string>
+    <string name="no_search_term">Không tìm thấy sách</string>
+    <string name="no_network">không kết nối được mạng</string>
+</resources>
