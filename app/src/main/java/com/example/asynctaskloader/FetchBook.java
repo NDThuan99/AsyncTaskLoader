@@ -23,6 +23,11 @@ public class FetchBook extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         Log.v("XXX", "doInBackground: "+strings[0]);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return NetworkUtils.getBookInfo(strings[0]);
     }
 

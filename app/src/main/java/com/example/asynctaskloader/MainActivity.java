@@ -40,15 +40,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void searchBooks(View view) {
         String str_query = mEdtBookInput.getText().toString();
         //new FetchBook(mTxtTitleText, mTxtAuthorText).execute(str_query);
-        Bundle queryBundle = new Bundle();
-        queryBundle.putString("queryString", str_query);
-        /**
-         * các đối số trong restartLoader(id, bundle, callback)
-         * id: sẽ hữu ích nếu bạn triển khai nhiều hơn một trình tải trong hoạt động của mình.
-         * Bundle: cho số bất kỳ dữ liệu nào cần tải.
-         * callback: Nếu bạn muốn tải xuống cung cấp kết quả cho MainActivity, hãy chỉ định thứ ba đối số này là this.
-         * */
-        getSupportLoaderManager().restartLoader(0, queryBundle, this);
+
 
         mTxtAuthorText.setText("");
         mTxtTitleText.setText(R.string.loading);
@@ -68,7 +60,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         if (networkInfo != null && networkInfo.isConnected()
                 && str_query.length() != 0) {
-            new FetchBook(mTxtTitleText, mTxtAuthorText).execute(str_query);
+
+            Bundle queryBundle = new Bundle();
+            queryBundle.putString("queryString", str_query);
+            /**
+             * các đối số trong restartLoader(id, bundle, callback)
+             * id: sẽ hữu ích nếu bạn triển khai nhiều hơn một trình tải trong hoạt động của mình.
+             * Bundle: cho số bất kỳ dữ liệu nào cần tải.
+             * callback: Nếu bạn muốn tải xuống cung cấp kết quả cho MainActivity, hãy chỉ định thứ ba đối số này là this.
+             * */
+            getSupportLoaderManager().restartLoader(0, queryBundle, this);
+
+//            new FetchBook(mTxtTitleText, mTxtAuthorText).execute(str_query);
             mTxtAuthorText.setText("");
             mTxtTitleText.setText(R.string.loading);
         }else {

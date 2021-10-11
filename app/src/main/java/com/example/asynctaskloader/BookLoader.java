@@ -20,11 +20,17 @@ public class BookLoader extends AsyncTaskLoader {
         //bắt đầu chạy loadInBackground()
         //sẽ không bắt đầu tải dữ liệu cho đến khi gọi phương thức forceLoad().
         super.onStartLoading();
+        forceLoad();
     }
 
     @Nullable
     @Override
-    public Object loadInBackground() {
+    public String loadInBackground() {
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return NetworkUtils.getBookInfo(mQueryString);
     }
 }
